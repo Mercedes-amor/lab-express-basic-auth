@@ -10,7 +10,21 @@ router.get("/signup", (req, res, next) =>{
 })
 
 
+// POST "/auth/signup" => recibir la info del usuario y crearlo en la DB
+router.post("/signup", async (req, res, next) =>{
+    console.log(req.body)
 
+try {
+    await User.create({
+        username: username,
+        email: email,
+        password: password
+    })
+    
+} catch (error) {
+    next (error)
+}
+})
 
 
 
